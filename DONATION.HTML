@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indian State and Temple Select Option</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4; /* Background color for the body */
+        display: flex;
+        justify-content: center; /* Center the content horizontally */
+        align-items: center; /* Center the content vertically */
+        height: 100vh; /* Make sure the container is 100% of viewport height */
+        margin: 0; /* Remove default margin */
+    }
+    .container {
+        background-color: #fff; /* Background color for the container */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .form-group select,
+    .form-group button {
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-color: #fff;
+        background-image: url('data:image/svg+xml;utf8,<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+    }
+    .form-group select:focus {
+        outline: none;
+        border-color: #007bff;
+    }
+    .form-group button {
+        border: none;
+        background-color: #007bff; /* Button color */
+        color: #fff;
+        cursor: pointer;
+    }
+    .form-group button:hover {
+        background-color: #0056b3; /* Button color on hover */
+    }
+</style>
+
+</head>
+<body>
+    
+    <div class="container">
+        <!-- <h1 style="font-family: 'Times new roman', Gadget, sans-serif; color: #0a7cd8; text-align: center; text-transform: uppercase; letter-spacing: 2px;">State Wise Temples Donation</h1> -->
+
+       <form id="templeForm" action="redirect.html" method="GET">
+
+            <div class="form-group">
+                <label for="state">Select a state:</label>
+                <select id="state" name="state">
+                    <option value="SELECT A STATE" selected disabled hidden>SELECT A STATE</option>
+                    <option value="AP">Andhra Pradesh</option>
+                    <option value="AR">Arunachal Pradesh</option>
+                    <option value="AS">Assam</option>
+                    <option value="BR">Bihar</option>
+                    <option value="CT">Chhattisgarh</option>
+                    <option value="GA">Goa</option>
+                    <option value="GJ">Gujarat</option>
+                    <option value="HR">Haryana</option>
+                    <option value="HP">Himachal Pradesh</option>
+                    <!-- <option value="JK">Jammu and Kashmir</option> -->
+                    <option value="JH">Jharkhand</option>
+                    <option value="KA">Karnataka</option>
+                    <option value="KL">Kerala</option>
+                    <option value="MP">Madhya Pradesh</option>
+                    <option value="MH">Maharashtra</option>
+                    <option value="MN">Manipur</option>
+                    <option value="ML">Meghalaya</option>
+                    <option value="MZ">Mizoram</option>
+                    <option value="NL">Nagaland</option>
+                    <option value="OR">Odisha</option>
+                    <option value="PB">Punjab</option>
+                    <option value="RJ">Rajasthan</option>
+                    <option value="SK">Sikkim</option>
+                    <option value="TN">Tamil Nadu</option>
+                    <option value="TS">Telangana</option>
+                    <option value="TR">Tripura</option>
+                    <option value="UK">Uttarakhand</option>
+                    <option value="UP">Uttar Pradesh</option>
+                    <option value="WB">West Bengal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="temple">Select a temple:</label>
+                <select id="temple" name="temple">
+                    <option value="SELECT A TEMPLE" selected disabled hidden>SELECT A TEMPLE</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </center>
+    </div>
+
+    <script>
+        // Object containing temple data for each state
+        var templeData = {
+            'AP': [
+                { name: 'Tirumala Venkateswara Temple, Tirupati', value: 'tirupati' },
+                { name: 'Srisailam Mallikarjuna Temple, Srisailam', value: 'srisailam' }
+            ],
+            'AR': [
+                { name: 'Malinithan Temple, Likabali', value: 'malinithan' },
+                { name: 'Parasuram Kund Temple, Lohit District', value: 'parasuram-kund' }
+            ],
+            'AS': [
+                { name: 'Kamakhya Temple, Guwahati', value: 'Kamakhya' },
+                { name: 'Umananda Temple, Peacock Island, Guwahati', value: 'Umananda' }
+            ],
+            'BR': [
+                { name: 'Mahabodhi Temple, Bodh Gaya', value: 'mahabodhi' },
+                { name: 'Mundeshwari Temple, Kaimur District', value: 'mundeshwari' }
+            ],
+            'CT': [
+            { name: 'Bhoramdeo Temple, Kawardha', value: 'bhoramdeo' },
+            { name: 'Danteshwari Temple, Dantewada', value: 'danteshwari' }
+            ],
+            'GA': [
+             { name: 'Shanta Durga Temple, Kavlem', value: 'shanta-durga' },
+             { name: 'Mangeshi Temple, Priol', value: 'mangeshi' }
+            ],
+            'GJ': [
+            { name: 'Somnath Temple, Prabhas Patan', value: 'somnath' },
+            { name: 'Dwarkadhish Temple, Dwarka', value: 'dwarkadhish' }
+            ],
+            'HR': [
+            { name: 'Sheetla Mata Temple, Gurgaon', value: 'sheetla-mata' },
+            { name: 'Kalayat Ancient Bricks Temple Complex, Kalayat', value: 'kalayat' }
+            ],
+            'HP': [
+            { name: 'Jwalamukhi Temple, Kangra', value: 'jwalamukhi' },
+            { name: 'Naina Devi Temple, Bilaspur', value: 'naina-devi' }
+            ],
+            'JH': [
+            { name: 'Baidyanath Temple, Deoghar', value: 'baidyanath' },
+            { name: 'Jagannath Temple, Ranchi', value: 'jagannath' }
+            ],
+            'KA': [
+            { name: 'Virupaksha Temple, Hampi', value: 'virupaksha' },
+            { name: 'Chamundeshwari Temple, Mysore', value: 'chamundeshwari' }
+            ],
+            'KL': [
+            { name: 'Sree Padmanabhaswamy Temple, Thiruvananthapuram', value: 'padmanabhaswamy' },
+            { name: 'Guruvayur Temple, Guruvayur', value: 'guruvayur' }
+            ],
+            'MP': [
+            { name: 'Khajuraho Temples, Khajuraho', value: 'khajuraho' },
+            { name: 'Mahakaleshwar Temple, Ujjain', value: 'mahakaleshwar' }
+            ],
+            'MH': [
+                { name: 'Trimbakeshwar Shiva Temple, Nashik', value: 'trimbakeshwar' },
+                { name: 'Siddhivinayak Temple, Mumbai', value: 'siddhivinayak' }
+            ],
+            'MN': [
+                { name: 'Shree Govindajee Temple, Imphal', value: 'govindajee' },
+                { name: 'Shree Bijoy Govindaji Temple, Sagolband', value: 'bijoy-govindaji' }
+            ],
+            'ML': [
+                { name: 'Nartiang Durga Temple, Nartiang', value: 'nartiang-durga' },
+                { name: 'Kali Mandir, Shillong', value: 'kali-mandir' }
+            ],
+            'MZ': [
+                { name: 'Lakshmi Narayan Temple, Aizawl', value: 'lakshmi-narayan' },
+                { name: 'Govindaji Temple, Kawnpui', value: 'govindaji-kawnpui' }
+            ],
+            'NL': [
+                { name: 'Kalibari Temple, Dimapur', value: 'kalibari' },
+                { name: 'Mahavir Temple, Dimapur', value: 'mahavir' }
+            ],
+            'OR': [
+                { name: 'Jagannath Temple, Puri', value: 'jagannath' },
+                { name: 'Lingaraja Temple, Bhubaneswar', value: 'lingaraja' }
+                        ],
+            'PB': [
+                { name: 'Durgiana Temple, Amritsar', value: 'durgiana' },
+                { name: 'Kali Devi Temple, Patiala', value: 'kali-devi' }
+            ],
+            'RJ': [
+                { name: 'Dilwara Temples, Mount Abu', value: 'dilwara' },
+                { name: 'Brahma Temple, Pushkar', value: 'brahma' }
+            ],
+            'SK': [
+                { name: 'Kirateshwar Mahadev Temple, Legship', value: 'kirat-mahadev' },
+                { name: 'Thakurbari Temple, Gangtok', value: 'thakurbari' }
+            ],
+            'TN': [
+                { name: 'Meenakshi Temple, Madurai', value: 'meenakshi' },
+                { name: 'Brihadeeswarar Temple, Thanjavur', value: 'brihadeeswarar' }
+            ],
+            'TS': [
+                { name: 'Yadagirigutta Temple, Yadadri Bhuvanagiri', value: 'yadagirigutta' },
+                { name: 'Thousand Pillar Temple, Warangal', value: 'thousand-pillar' }
+            ],
+            'TR': [
+                { name: 'Tripurasundari Temple, Udaipur', value: 'tripurasundari' },
+                { name: 'Chaturdasha Temple, Agartala', value: 'chaturdasha' }
+            ],
+            'UP': [
+                { name: 'Kashi Vishwanath Temple, Varanasi', value: 'kashi-vishwanath' },
+                { name: 'Ram Janmabhoomi Temple, Ayodhya', value: 'ram-janmabhoomi' }
+            ],
+            'UK': [
+                { name: 'Badrinath Temple, Badrinath', value: 'badrinath' },
+                { name: 'Kedarnath Temple, Kedarnath', value: 'kedarnath' }
+            ],
+            'WB': [
+                { name: 'Kalighat Kali Temple, Kolkata', value: 'kalighat-kali' },
+                { name: 'Dakshineswar Kali Temple, Kolkata', value: 'dakshineswar-kali' },
+                { name: 'Mayapur Iskon, Mayapur', value: 'mayapur' }
+            ]
+
+        };
+
+        // Function to populate temple select options based on the selected state
+        document.getElementById('state').addEventListener('change', function() {
+            var templeSelect = document.getElementById('temple');
+            templeSelect.innerHTML = ''; // Clear existing options
+
+            var selectedState = this.value;
+            var temples = templeData[selectedState];
+
+            temples.forEach(function(temple) {
+                var option = document.createElement('option');
+                option.text = temple.name;
+                option.value = temple.value;
+                templeSelect.add(option);
+            });
+        });
+    </script>
+    <script>
+    document.getElementById('templeForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+
+    // Get the selected temple value
+    var templeSelect = document.getElementById('temple');
+    var selectedTemple = templeSelect.value;
+
+    // Redirect the user based on the selected temple
+    if (selectedTemple === 'tirupati') {
+        window.location.href = 'https://ttdevasthanams.ap.gov.in/home/dashboard'; // Redirect to Tirumala Venkateswara Temple donation page
+    } else if (selectedTemple === 'srisailam') {
+        window.location.href = 'http://www.srisailadevasthanam.org/'; // Redirect to Srisailam Mallikarjuna Temple donation page
+    } else if (selectedTemple === 'Kamakhya') {
+        window.location.href = 'https://www.maakamakhya.org/'; // Redirect to Kamakhya Temple donation page
+    }else if (selectedTemple === 'mahabodhi') {
+        window.location.href = 'https://bodhgayatemple.com/donate-now/'; // Redirect to Mahabodhi Temple donation page
+    // } else if (selectedTemple === 'shanta-durga') {
+    //     window.location.href = 'https://shantadurga.org/donations/'; // Redirect to Shanta Durga Temple donation page
+    } else if (selectedTemple === 'somnath') {
+        window.location.href = 'https://somnath.org/online-donation/'; // Redirect to Somnath Temple donation page
+    } else if (selectedTemple === 'dwarkadhish') {
+        window.location.href = 'http://www.dwarkadhish.org/'; // Redirect to Dwarkadhish Temple donation page
+    } else if (selectedTemple === 'sheetla-mata') {
+        window.location.href = 'https://sheetlamatamandir.in/'; // Redirect to Sheetla Mata Temple donation page
+    }else if (selectedTemple === 'jwalamukhi') {
+        window.location.href = 'https://jawalaji.in/donations/'; // Redirect to Jwalamukhi Temple donation page
+    } else if (selectedTemple === 'naina-devi') {
+        window.location.href = 'https://nainadevi.com/'; // Redirect to Naina Devi Temple donation page
+    } else if (selectedTemple === 'baidyanath') {
+        window.location.href = 'https://babadham.org/'; // Redirect to Baidyanath Temple donation page
+    }else if (selectedTemple === 'chamundeshwari') {
+        window.location.href = 'https://chamundeshwaritemple.in/'; // Redirect to Chamundeshwari Temple donation page
+    } else if (selectedTemple === 'padmanabhaswamy') {
+        window.location.href = 'https://spst.in/'; // Redirect to Padmanabhaswamy Temple donation page
+    } else if (selectedTemple === 'guruvayur') {
+        window.location.href = 'https://guruvayurdevaswom.in/'; // Redirect to Guruvayur Temple donation page
+    } else if (selectedTemple === 'mahakaleshwar') {
+            window.location.href = 'https://shrimahakaleshwar.com/'; // Redirect to Mahakaleshwar Temple donation page
+    } else if (selectedTemple === 'trimbakeshwar') {
+            window.location.href = 'https://trimbakeshwar.org/'; // Redirect to Trimbakeshwar Shiva Temple donation page
+    } else if (selectedTemple === 'siddhivinayak') {
+            window.location.href = 'https://www.siddhivinayak.org/'; // Redirect to Siddhivinayak Temple donation page
+    }else if (selectedTemple === 'jagannath') {
+            window.location.href = 'https://www.shreejagannatha.in/donation/'; // Redirect to Jagannath Temple donation page
+    } else if (selectedTemple === 'durgiana') {
+            window.location.href = 'https://durgianamandir.in/donation/'; // Redirect to Durgiana Temple donation page
+    }else if (selectedTemple === 'meenakshi') {
+            window.location.href = 'https://www.maduraimeenakshi.org/'; // Redirect to Meenakshi Temple donation page
+    } else if (selectedTemple === 'yadagirigutta') {
+            window.location.href = 'https://yadadritemple.telangana.gov.in/'; // Redirect to Yadagirigutta Temple donation page
+    } else if (selectedTemple === 'kashi-vishwanath') {
+            window.location.href = 'https://www.shrikashivishwanath.org/'; // Redirect to Kashi Vishwanath Temple donation page
+    } else if (selectedTemple === 'ram-janmabhoomi') {
+            window.location.href = 'https://srjbtkshetra.org/'; // Redirect to Ram Janmabhoomi Temple donation page
+    } else if (selectedTemple === 'badrinath') {
+            window.location.href = 'https://badrinath-kedarnath.gov.in/'; // Redirect to Badrinath Temple donation page
+    } else if (selectedTemple === 'kedarnath') {
+            window.location.href = 'https://badrinath-kedarnath.gov.in/'; // Redirect to Kedarnath Temple donation page
+    } else if (selectedTemple === 'dakshineswar-kali') {
+            window.location.href = 'https://www.dakshineswarkalitemple.org/'; // Redirect to Dakshineswar Kali Temple donation page
+    }  else if (selectedTemple === 'mayapur') {
+            window.location.href = 'https://www.mayapur.com/serve-mayapur/general-donation/'; 
+    } else {
+        alert('Donation link not available for this temple.'); // Inform the user if donation link is not available
+    }
+});
+
+  
+</script>
+    
+</body>
+</html>
